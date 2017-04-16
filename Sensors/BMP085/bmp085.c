@@ -1,21 +1,20 @@
-
-/**
-  * Copyright (C) 2016, Ivan Juresa
-	*
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation, either version 3 of the License, or
-  * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  * GNU General Public License for more details.
-	*
-  * You should have received a copy of the GNU General Public License
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-	*
-**/
+/*******************************************************************************
+* Copyright (C) 2016, Ivan Juresa
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*
+*******************************************************************************/
 
 /* Includes */
 #include "bmp085.h"
@@ -81,10 +80,10 @@ int BMP085readCalibration(I2C_HandleTypeDef *I2CxHandle, uint8_t address) {
 //    Description: Called once in main. Calls BMP085readCalibration with msb address
 //    Input:       -
 //    Output:      -
-//    Misc:		  	 -
+//    Misc:		  	-
 //------------------------------------------------------------------------------
 void BMP085Calibration(I2C_HandleTypeDef *I2CxHandle) {
-	ac1 = BMP085readCalibration(I2CxHandle, 0xAA);
+  ac1 = BMP085readCalibration(I2CxHandle, 0xAA);
   ac2 = BMP085readCalibration(I2CxHandle, 0xAC);
   ac3 = BMP085readCalibration(I2CxHandle, 0xAE);
   ac4 = BMP085readCalibration(I2CxHandle, 0xB0);
@@ -102,7 +101,6 @@ void BMP085Calibration(I2C_HandleTypeDef *I2CxHandle) {
 //    Description: Reads uncompensated temperature value(UT). 
 //    Input:       -
 //    Output:      Returns UT
-//    Misc:		  	 -
 //------------------------------------------------------------------------------
 int BMP085readUT(I2C_HandleTypeDef *I2CxHandle) {
 	uint8_t sendArray[2];
@@ -125,7 +123,6 @@ int BMP085readUT(I2C_HandleTypeDef *I2CxHandle) {
 //    Description: Reads uncompensated pressure value(UP).
 //    Input:       -
 //    Output:      Returns UP
-//    Misc:		  	 -
 //------------------------------------------------------------------------------
 int BMP085readUP(I2C_HandleTypeDef *I2CxHandle) {
 	uint8_t msb, lsb, xlsb;
@@ -163,7 +160,6 @@ int BMP085readUP(I2C_HandleTypeDef *I2CxHandle) {
 //    Description: Temperature calculation
 //    Input:       Uncompensated temperature value(UT)
 //    Output:      Returns temperature
-//    Misc:		  	 -
 //------------------------------------------------------------------------------
 int BMP085calculateTemperature(long ut) {
 	long x1, x2;
@@ -180,7 +176,6 @@ int BMP085calculateTemperature(long ut) {
 //    Description: Pressure calculation
 //    Input:       Uncompensated pressure value(UP)
 //    Output:      Returns pressure
-//    Misc:		  	 -
 //------------------------------------------------------------------------------
 int BMP085calculatePressure(long up) {
 	long x1, x2, x3, b3, b6, p;
